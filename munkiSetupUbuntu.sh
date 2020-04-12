@@ -20,3 +20,17 @@ sudo usermod -a -G munki $USER # Adds the current console user to munki group
 sudo usermod -a -G munki www-data # Adds web user to munki group
 sudo chown -R $USER:munki /usr/local/munki_repo
 sudo chmod -R 2774 /usr/local/munki_repo
+
+sudo mv /etc/nginx/sites-enabled/default ~/default.bkup
+sudo cp ./munkiNginxDefault /etc/nginx/sites-enabled/default
+
+sudo /etc/init.d/nginx start
+
+sudo htpasswd -c /etc/nginx/.htpasswd munkihttpuser
+
+sudo /etc/init.d/nginx reload
+
+sudo smbpasswd -a munki
+
+sudo mv /etc/samba/smb.conf /etc/samba/smb.conf.bak
+sudo cp ./munkiSamba /etc/samba/smb.conf
