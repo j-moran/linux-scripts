@@ -4,9 +4,9 @@
 # Munki Setup
 #---------------------------------
 
-sudo apt-get update
-sudo apt-get upgrade
-sudo apt-get -y install git curl build-essential nginx apache2-utils samba
+sudo apt update
+sudo apt upgrade -y
+sudo apt install curl build-essential nginx apache2-utils samba -y
 
 sudo mkdir /usr/local/munki_repo
 sudo mkdir -p /etc/nginx/sites-enabled/
